@@ -10,7 +10,7 @@ Node.js® is a JavaScript runtime built on <a href="https://v8.dev/">Chrome's V8
 
 ## About Whatsapp Web API
 
-Whatsapp Web API is a Simple Bot for Whatsapp, you can create a sticker & receive deleted messages from your contacts
+Whatsapp Web API is a Simple Bot for Whatsapp, you can create a sticker, send quotes & receive deleted messages from your contacts
 
 ## How To
 
@@ -20,7 +20,7 @@ set the `CHAT_LOG_ID` with your phone number (starts with country code, `ex:6281
 set the `CHROME_PATH` with your chrome application path (puppeteer needs Chrome to send video & audio via Whatsapp Web, `ex:C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`),
 
 then run this command:  
-`npm install`
+`npm install`  
 then use:  
 `npm run start:dev` or `npm run start`
 
