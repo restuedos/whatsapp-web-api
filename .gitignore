@@ -1,0 +1,10 @@
+.git
+.vscode
+.wwebjs_auth
+.wwebjs_cache
+local_storage
+node_modules
+storage/*
+.env
+*.log
+package-lock.json

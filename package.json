@@ -1,0 +1,27 @@
+{
+  "name": "whatsapp-web-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js NODE_ENV=production",
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "cli-progress": "^3.12.0",
+    "dotenv": "^16.4.1",
+    "mime": "^3.0.0",
+    "node-localstorage": "^3.0.5",
+    "qrcode-terminal": "^0.12.0",
+    "uuid": "^9.0.1",
+    "whatsapp-web.js": "github:restuedos/whatsapp-web.js",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
