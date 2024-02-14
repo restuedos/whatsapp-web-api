@@ -47,6 +47,26 @@ const PROMPT = {
             msg.reply(media, null, { sendMediaAsSticker: true });
         },
     },
+    SPAM: {
+        id: uuidv4(),
+        name: 'SPAM',
+        prompt: '!spam',
+        query: 'startsWith',
+        description: 'Spam a number with message',
+        run: async (msg, client) => {
+            const messageArray = msg.body.split(' ');
+            const rep = messageArray[1];
+            const number = messageArray[2];
+            const messageIndex = msg.body.indexOf(number) + number.length;
+            const message = msg.body.slice(messageIndex, msg.body.length);
+            for (let i = 0; i < rep; i++) {
+                setTimeout(function(){
+                    client.sendMessage(`${number}@c.us`, message);
+                }, 100 * i)
+            }
+            msg.reply(`Number has been spammed ${rep} times`);
+        }
+    },
     DELETE: {
         id: uuidv4(),
         name: 'DELETE',
