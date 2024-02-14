@@ -88,7 +88,7 @@ client.on('message', async (msg) => {
     try {
         if (messageIsPrompt(msg.body)) {
             const prompt = getPrompt(msg.body);
-            prompt.function(msg);
+            prompt.run(msg, client);
         } else if (msg.hasMedia && !msg.fromMe) {
             const sender = await msg.getContact();
             const uniqueId = `msg-${sender.number}`;
@@ -101,17 +101,19 @@ client.on('message', async (msg) => {
     }
 });
 
-const messageIsPrompt = (message) => {
-    const prompt = Object.values(PROMPT).find((value) => {
-        return message.body === value.prompt;
-    });
-    return prompt !== undefined;
-}
-
 const getPrompt = (prompt) => {
     return Object.values(PROMPT).find((value) => {
-        return prompt === value.prompt;
+        switch (value.query) {
+            case 'equals':
+                return prompt === value.prompt;
+            case 'startsWith':
+                return prompt.startsWith(value.prompt);
+        }
     });
+}
+
+const messageIsPrompt = (message) => {
+    return getPrompt(message) !== undefined;
 }
 
 const uploadMessageMedia = (name, messageMedia) => {

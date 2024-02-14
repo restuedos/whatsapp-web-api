@@ -7,8 +7,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'PING',
         prompt: '!ping',
+        query: 'equals',
         description: 'Reply \'ping\' to sender\'s message',
-        function: (msg) => {
+        run: (msg) => {
             msg.reply('pong');
         },
     },
@@ -16,8 +17,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'QUOTE',
         prompt: '!quote',
+        query: 'equals',
         description: 'Send quote from Quotable (https://github.com/lukePeavey/quotable)',
-        function: async (msg) => {
+        run: async (msg) => {
             const response = await axios.get('https://api.quotable.io/quotes/random');
             if (response.status !== StatusCodes.OK) {
                 throw Error('Something went wrong while getting quotes')
@@ -30,8 +32,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'STICKER',
         prompt: '!sticker',
+        query: 'equals',
         description: 'Create sticker from quoted message or image sent by sender',
-        function: async (msg) => {
+        run: async (msg) => {
             let messageMedia = msg;
             if (msg.hasQuotedMsg) {
                 const quotedMsg = await msg.getQuotedMessage();
@@ -48,8 +51,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'DELETE',
         prompt: '!delete',
+        query: 'equals',
         description: 'Delete chat or quoted message by sender',
-        function: async (msg) => {
+        run: async (msg) => {
             if (msg.hasQuotedMsg) {
                 const quotedMsg = await msg.getQuotedMessage();
                 quotedMsg.delete(quotedMsg.fromMe);
@@ -63,8 +67,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'CLEAR',
         prompt: '!clear',
+        query: 'equals',
         description: 'Clear message history of current chat',
-        function: async (msg) => {
+        run: async (msg) => {
             const chat = await msg.getChat();
             chat.clearMessages();
         },
@@ -73,8 +78,9 @@ const PROMPT = {
         id: uuidv4(),
         name: 'HELP',
         prompt: '!help',
+        query: 'equals',
         description: 'Send list of prompts available',
-        function: async (msg) => {
+        run: async (msg) => {
             let reply = 'List of Prompts:';
             Object.values(PROMPT).forEach((value) => {
                 reply = reply.concat(`\n - ${value.prompt}: ${value.description}`);
