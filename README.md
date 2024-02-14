@@ -10,7 +10,7 @@ Node.js® is a JavaScript runtime built on <a href="https://v8.dev/">Chrome's V8
 
 ## About Whatsapp Web API
 
-Whatsapp Web API is a Simple Bot for Whatsapp, you can create a sticker, send quotes & receive deleted messages from your contacts
+Whatsapp Web API is a Simple Bot for Whatsapp, you can create a sticker, spam chat, send quotes & receive deleted messages from your contacts
 
 ## How To
 
